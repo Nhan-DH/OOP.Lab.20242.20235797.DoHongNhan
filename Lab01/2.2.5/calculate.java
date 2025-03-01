@@ -1,20 +1,24 @@
-package lab1;
+package lab1;	
+import javax.swing.JOptionPane;
 
-import java.util.Scanner;
 
 public class calculate {
-public static void main(String[] args) {
-	Scanner sc = new Scanner(System.in);
-	System.out.println("nhap vao so a:");
-	double a = sc.nextDouble();
-	System.out.println("nhap vao so b:");
-	double b = sc.nextDouble();
-	System.out.println("cac ket qua la :");
-	System.out.println("tong cua a va b la :" + (a+b));
-	System.out.println("hieu cua a va b la :" + (a-b));
-	System.out.println("tich cua a va b la :" + (a*b));
-	System.out.println("thuong a va b la :" + (a/b));
-	sc.close();
-	
-}
+	public static void main(String[] args) {
+
+		String strNum1 = JOptionPane.showInputDialog(null, "Nhập số thứ nhất:", "Nhập số",
+				JOptionPane.INFORMATION_MESSAGE);
+		String strNum2 = JOptionPane.showInputDialog(null, "Nhập số thứ hai:", "Nhập số",
+				JOptionPane.INFORMATION_MESSAGE);
+
+		double num1 = Double.parseDouble(strNum1);
+		double num2 = Double.parseDouble(strNum2);
+        double difference = num1 - num2 ;
+		double sum = num1 + num2;
+		double product = num1 * num2;
+		String divisionResult = (num2 != 0) ? String.valueOf(num1 / num2) : "Không thể chia cho 0";
+
+		String message = "Tổng: " + sum + "\n"+"Hieu: " + difference + "\n"+ "Tích: " + product + "\n" + "Thương: " + divisionResult;
+
+		JOptionPane.showMessageDialog(null, message, "Kết quả", JOptionPane.INFORMATION_MESSAGE);
+	}
 }
