@@ -34,18 +34,18 @@ public class NumberOfDayInMonth {
         }
         
         int daysInMonth = getDaysInMonth(year, month);
-        System.out.println("Tháng " + getFullMonthName(month) + " năm " + year + " có " + daysInMonth + " ngày.");
+        System.out.println(getFullMonthName(month) + " năm " + year + " có " + daysInMonth + " ngày.");
     }
 
     public static int getMonthNumber(String input) {
-        String[] months = {"tháng một", "tháng hai", "tháng ba", "tháng tư", "tháng năm", "tháng sáu", 
-                           "tháng bảy", "tháng tám", "tháng chín", "tháng mười", "tháng mười một", "tháng mười hai"};
+        String[] months = {"Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu", 
+                           "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai"};
         String[] shortMonths = {"thg 1", "thg 2", "thg 3", "thg 4", "thg 5", "thg 6", 
                                 "thg 7", "thg 8", "thg 9", "thg 10", "thg 11", "thg 12"};
         String[] threeLetterMonths = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
         
         for (int i = 0; i < 12; i++) {
-            if (input.equals(months[i]) || input.equals(shortMonths[i]) || input.equals(threeLetterMonths[i]) || input.equals(String.valueOf(i + 1))) {
+            if (input.equalsIgnoreCase(months[i]) || input.equalsIgnoreCase(shortMonths[i]) || input.equalsIgnoreCase(threeLetterMonths[i]) || input.equals(String.valueOf(i + 1))) {
                 return i + 1;
             }
         }
@@ -69,4 +69,3 @@ public class NumberOfDayInMonth {
         }
     }
 }
-             
