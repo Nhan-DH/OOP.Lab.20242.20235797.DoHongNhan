@@ -1,0 +1,2 @@
+9
+biểu đồ UC thiếu quan hệ actor-UC, thiếu UC của manager
