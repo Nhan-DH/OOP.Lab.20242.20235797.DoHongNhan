@@ -42,12 +42,12 @@ public class Aims {
 	public static void showMenu(Scanner scanner, Store store, Cart cart) {
 		System.out.println("AIMS: ");
 		System.out.println("--------------------------------");
-		System.out.println("1. View store");
-		System.out.println("2. Update store");
-		System.out.println("3. See current cart");
+		System.out.println("1. Xem store");
+		System.out.println("2. Them store");
+		System.out.println("3. Gio hang hien tai");
 		System.out.println("0. Exit");
 		System.out.println("--------------------------------");
-		System.out.println("Please choose a number: 0-1-2-3");
+		System.out.println("Hãy chọn chức năng : 0-1-2-3");
 		int option = scanner.nextInt();
 		switch (option) {
 		case 0 -> {
@@ -55,21 +55,21 @@ public class Aims {
 			System.exit(0);
 		}
 		case 1 -> storeMenu(scanner, store, cart);
-		case 2 -> updateStoreMenu(scanner, store);
+		case 2 -> updateStoreMenu(scanner, store, cart);
 		case 3 -> {
 			cart.printCart();
-			cartMenu(scanner, cart);
+			cartMenu(scanner, store, cart);
 		}
 		}
 	}
 
-	public static void updateStoreMenu(Scanner scanner, Store store) {
+	public static void updateStoreMenu(Scanner scanner, Store store, Cart cart) {
 		System.out.println("""
 				==========================
-				1. add Media
-				2. delete Media
+				1. Thêm Media
+				2. Xóa Media
 				3. update Media in Store
-				0. Back
+				0. Trở về
 				==========================
 				Option: """);
 		int option = scanner.nextInt();
@@ -82,36 +82,26 @@ public class Aims {
 					-------
 					-> Your type: """);
 			int option2 = scanner.nextInt();
-			System.out.print("Enter id: ");
+			System.out.print("Id là : ");
 			int id = scanner.nextInt();
 			scanner.nextLine();
-			System.out.print("Enter title: ");
+			System.out.print("tiêu đề là: ");
 			String title = scanner.nextLine();
-			System.out.print("Enter category: ");
+			System.out.print("thể loại là: ");
 			String category = scanner.nextLine();
-			System.out.print("Enter cost: ");
+			System.out.print("Giá là: ");
 			float cost = scanner.nextFloat();
 			scanner.nextLine();
 			switch (option2) {
 			case 1 -> {
-				System.out.print("Enter director's name: ");
+				System.out.print("Ten dao dien la: ");
 				String director = scanner.nextLine();
-				System.out.print("Enter dvd's length: ");
+				System.out.print("Độ dài la : ");
 				int length = scanner.nextInt();
 				scanner.nextLine();
 				store.addMedia(new DigitalVideoDisc(id, title, category, cost, director, length));
 			}
-			case 3 -> {
-				System.out.print("Enter author's name (Enter nothing to skip): ");
-				StringBuilder author = new StringBuilder(scanner.nextLine());
-				ArrayList<String> authors = new ArrayList<String>();
-				while (!author.isEmpty()) {
-					authors.add(author.toString());
-					System.out.print("Enter author's name (Enter nothing to skip): ");
 
-				}
-				store.addMedia(new Book(id, title, category, cost, authors));
-			}
 			case 2 -> {
 				System.out.print("Enter artist's name: ");
 				StringBuffer artist = new StringBuffer(scanner.nextLine());
@@ -130,6 +120,17 @@ public class Aims {
 
 				}
 				store.addMedia(new CompactDisc(id, title, category, cost, artist.toString(), tracks));
+			}
+			case 3 -> {
+				System.out.print("Enter author's name (Enter nothing to skip): ");
+				StringBuilder author = new StringBuilder(scanner.nextLine());
+				ArrayList<String> authors = new ArrayList<String>();
+				while (!author.isEmpty()) {
+					authors.add(author.toString());
+					System.out.print("Enter author's name (Enter nothing to skip): ");
+
+				}
+				store.addMedia(new Book(id, title, category, cost, authors));
 			}
 			}
 		}
@@ -162,6 +163,9 @@ public class Aims {
 			store.getItemsInStore().get(id).setCategory(category);
 			System.out.println(store);
 		}
+		case 0 -> {
+			showMenu(scanner, store, cart);
+		}
 		}
 	}
 
@@ -180,7 +184,7 @@ public class Aims {
 		switch (option) {
 		case 1 -> mediaDetailsMenu(scanner, store, cart);
 		case 0 -> {
-			return;
+			showMenu(scanner, store, cart);
 		}
 		case 2 -> {
 			System.out.print("Enter media's title: ");
@@ -216,19 +220,12 @@ public class Aims {
 
 		case 4 -> {
 			cart.printCart();
-			cartMenu(scanner, cart);
+			cartMenu(scanner, store, cart);
 		}
 		}
 	}
 
 	public static void mediaDetailsMenu(Scanner scanner, Store store, Cart cart) {
-		System.out.println("Options: ");
-		System.out.println("--------------------------------");
-		System.out.println("1. Add to cart");
-		System.out.println("2. Play");
-		System.out.println("0. Back");
-		System.out.println("--------------------------------");
-		System.out.println("Please choose a number: 0-1-2");
 		System.out.print("Enter media's title: ");
 		String title = scanner.nextLine();
 		Media item = store.findMedia(title);
@@ -265,13 +262,13 @@ public class Aims {
 				}
 			}
 			case 0 -> {
-				return;
+				storeMenu(scanner , store , cart);
 			}
 			}
 		}
 	}
 
-	public static void cartMenu(Scanner scanner, Cart cart) {
+	public static void cartMenu(Scanner scanner, Store store, Cart cart) {
 		while (true) {
 			System.out.println("""
 					Options:
@@ -288,7 +285,7 @@ public class Aims {
 			scanner.nextLine();
 			switch (option) {
 			case 0 -> {
-				return;
+				showMenu(scanner, store, cart);
 			}
 			case 1 -> {
 				System.out.println("""
