@@ -39,9 +39,9 @@ public class Store {
     public void addMedia(Media disc) {
         if(!checkMedia(disc)) {
             itemsInStore.add(disc);
-            System.out.println( disc.getTitle() + " Đã thêm vào kho!");
+            System.out.println( disc.getTitle() + " Đã thêm vào cửa hàng!");
         } else {
-            System.out.println( disc.getTitle() + "Đã có trong kho !");
+            System.out.println( disc.getTitle() + "Đã có trong cửa hàng!");
         }
     }
 
