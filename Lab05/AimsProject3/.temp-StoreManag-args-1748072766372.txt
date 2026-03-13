@@ -1,0 +1,9 @@
+"-javaagent:C:\\Users\\MyPC\\eclipse\\java-2024-12\\eclipse\\configuration\\org.eclipse.osgi\\485\\0\\.cp\\jacocoagent.jar=includes=*,excludes=,exclclassloader=sun.reflect.DelegatingClassLoader,output=tcpclient,port=50462"
+-Dfile.encoding=UTF-8
+-Dstdout.encoding=UTF-8
+-Dstderr.encoding=UTF-8
+-p
+"D:\\JAVA CODE\\AimsProject3\\bin"
+-XX:+ShowCodeDetailsInExceptionMessages
+-m
+AimsProject3/hust.soict.hesdpi.aims.screen.manager.StoreManagerScreen
